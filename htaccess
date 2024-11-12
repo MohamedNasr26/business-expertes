@@ -1,0 +1,16 @@
+DirectoryIndex home.html
+ErrorDocument 404 https://business-expertes.com/404
+
+IndexIgnore * # prevent directory listing
+
+Order deny,allow
+Allow from *
+
+# ------------------------------------------
+# Rewrite so that html extentions are not shown
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html
+AddHandler application/x-httpd-ea-html56 .html
